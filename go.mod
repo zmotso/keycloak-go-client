@@ -1,6 +1,6 @@
 module github.com/zmotso/keycloak-go-client
 
-go 1.23.2
+go 1.22
 
 require github.com/oapi-codegen/runtime v1.1.1
 
