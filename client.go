@@ -3,7 +3,7 @@ package keycloak_go_client
 import (
 	"context"
 	"fmt"
-	"github.com/zmotso/keycloak-go-client/internal/generated"
+	"github.com/zmotso/keycloak-go-client/generated"
 	"net/http"
 )
 
