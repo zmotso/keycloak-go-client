@@ -2676,7 +2676,7 @@ type PostAdminRealmsRealmUsersJSONRequestBody = UserRepresentation
 // PutAdminRealmsRealmUsersManagementPermissionsJSONRequestBody defines body for PutAdminRealmsRealmUsersManagementPermissions for application/json ContentType.
 type PutAdminRealmsRealmUsersManagementPermissionsJSONRequestBody = ManagementPermissionReference
 
-// PutAdminRealmsRealmUsersProfileJSONRequestBody defines body for PutAdminRealmsRealmUsersProfile for application/json ContentType.
+// PutAdminRealmsRealmUsersProfileJSONRequestBody defines body for UpdateUsersProfile for application/json ContentType.
 type PutAdminRealmsRealmUsersProfileJSONRequestBody = UPConfig
 
 // PutAdminRealmsRealmUsersUserIdJSONRequestBody defines body for PutAdminRealmsRealmUsersUserId for application/json ContentType.
@@ -29573,7 +29573,7 @@ func NewGetAdminRealmsRealmUsersCountRequest(server string, realm string, params
 	return req, nil
 }
 
-// NewGetAdminRealmsRealmUsersProfileRequest generates requests for GetAdminRealmsRealmUsersProfile
+// NewGetAdminRealmsRealmUsersProfileRequest generates requests for GetUsersProfile
 func NewGetAdminRealmsRealmUsersProfileRequest(server string, realm string) (*http.Request, error) {
 	var err error
 
@@ -29607,7 +29607,7 @@ func NewGetAdminRealmsRealmUsersProfileRequest(server string, realm string) (*ht
 	return req, nil
 }
 
-// NewPutAdminRealmsRealmUsersProfileRequest calls the generic PutAdminRealmsRealmUsersProfile builder with application/json body
+// NewPutAdminRealmsRealmUsersProfileRequest calls the generic UpdateUsersProfile builder with application/json body
 func NewPutAdminRealmsRealmUsersProfileRequest(server string, realm string, body PutAdminRealmsRealmUsersProfileJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
@@ -29618,7 +29618,7 @@ func NewPutAdminRealmsRealmUsersProfileRequest(server string, realm string, body
 	return NewPutAdminRealmsRealmUsersProfileRequestWithBody(server, realm, "application/json", bodyReader)
 }
 
-// NewPutAdminRealmsRealmUsersProfileRequestWithBody generates requests for PutAdminRealmsRealmUsersProfile with any type of body
+// NewPutAdminRealmsRealmUsersProfileRequestWithBody generates requests for UpdateUsersProfile with any type of body
 func NewPutAdminRealmsRealmUsersProfileRequestWithBody(server string, realm string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 

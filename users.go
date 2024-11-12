@@ -5,13 +5,20 @@ import (
 	"github.com/zmotso/keycloak-go-client/internal/generated"
 )
 
-type UserProfileConfig = generated.UPConfig
+type (
+	UserProfileConfig               = generated.UPConfig
+	USerProfileAttribute            = generated.UPAttribute
+	USerProfileAttributePermissions = generated.UPAttributePermissions
+	USerProfileAttributeRequired    = generated.UPAttributeRequired
+	USerProfileAttributeSelector    = generated.UPAttributeSelector
+	USerProfileGroup                = generated.UPGroup
+)
 
 type usersClient struct {
 	client generated.ClientWithResponsesInterface
 }
 
-func (c *usersClient) GetAdminRealmsRealmUsersProfile(ctx context.Context, realm string) (*UserProfileConfig, *Response, error) {
+func (c *usersClient) GetUsersProfile(ctx context.Context, realm string) (*UserProfileConfig, *Response, error) {
 	res, err := c.client.GetAdminRealmsRealmUsersProfileWithResponse(ctx, realm)
 	if res != nil {
 		return res.JSON200, &Response{HTTPResponse: res.HTTPResponse, Body: res.Body}, err
@@ -20,7 +27,7 @@ func (c *usersClient) GetAdminRealmsRealmUsersProfile(ctx context.Context, realm
 	return nil, nil, err
 }
 
-func (c *usersClient) PutAdminRealmsRealmUsersProfile(ctx context.Context, realm string, userProfile UserProfileConfig) (*UserProfileConfig, *Response, error) {
+func (c *usersClient) UpdateUsersProfile(ctx context.Context, realm string, userProfile UserProfileConfig) (*UserProfileConfig, *Response, error) {
 	res, err := c.client.PutAdminRealmsRealmUsersProfileWithResponse(ctx, realm, userProfile)
 	if res != nil {
 		return res.JSON200, &Response{HTTPResponse: res.HTTPResponse, Body: res.Body}, err
