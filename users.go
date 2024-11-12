@@ -7,11 +7,11 @@ import (
 
 type (
 	UserProfileConfig               = generated.UPConfig
-	USerProfileAttribute            = generated.UPAttribute
-	USerProfileAttributePermissions = generated.UPAttributePermissions
-	USerProfileAttributeRequired    = generated.UPAttributeRequired
-	USerProfileAttributeSelector    = generated.UPAttributeSelector
-	USerProfileGroup                = generated.UPGroup
+	UserProfileAttribute            = generated.UPAttribute
+	UserProfileAttributePermissions = generated.UPAttributePermissions
+	UserProfileAttributeRequired    = generated.UPAttributeRequired
+	UserProfileAttributeSelector    = generated.UPAttributeSelector
+	UserProfileGroup                = generated.UPGroup
 )
 
 type usersClient struct {
