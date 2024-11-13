@@ -12,6 +12,7 @@ type (
 	UserProfileAttributeRequired    = generated.UPAttributeRequired
 	UserProfileAttributeSelector    = generated.UPAttributeSelector
 	UserProfileGroup                = generated.UPGroup
+	UnmanagedAttributePolicy        = generated.UnmanagedAttributePolicy
 )
 
 type usersClient struct {
