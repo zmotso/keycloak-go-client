@@ -14,8 +14,9 @@ type Client struct {
 }
 
 type ClientOpts struct {
-	url   string
-	token string
+	url    string
+	client *http.Client
+	token  string
 }
 
 type ClientOptsSetter func(*ClientOpts)
@@ -23,6 +24,12 @@ type ClientOptsSetter func(*ClientOpts)
 func WithToken(token string) func(*ClientOpts) {
 	return func(opts *ClientOpts) {
 		opts.token = token
+	}
+}
+
+func WithHTTPClient(httpClient *http.Client) func(*ClientOpts) {
+	return func(opts *ClientOpts) {
+		opts.client = httpClient
 	}
 }
 
@@ -37,9 +44,17 @@ func NewClient(url string, opts ...ClientOptsSetter) (*Client, error) {
 
 	tokenProvider := NewBearerTokenAuthProvider(defaults.token)
 
+	generatedClientOpts := []generated.ClientOption{
+		generated.WithRequestEditorFn(tokenProvider.Intercept),
+	}
+
+	if defaults.client != nil {
+		generatedClientOpts = append(generatedClientOpts, generated.WithHTTPClient(defaults.client))
+	}
+
 	c, err := generated.NewClientWithResponses(
 		defaults.url,
-		generated.WithRequestEditorFn(tokenProvider.Intercept),
+		generatedClientOpts...,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create keycloak client: %w", err)
